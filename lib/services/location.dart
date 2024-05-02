@@ -23,8 +23,12 @@ class Location {
     if (!isLocationServiceEnabled) {
       await Geolocator.openLocationSettings();
     }
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
-    this._longitude = position.longitude;
-    this._latitude = position.latitude;
+    try {
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
+      this._longitude = position.longitude;
+      this._latitude = position.latitude;
+    } catch (e) {
+      print("Error: $e");
+    }
   }
 }
