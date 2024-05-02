@@ -23,9 +23,7 @@ class Location {
     if (!isLocationServiceEnabled) {
       await Geolocator.openLocationSettings();
     }
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.lowest);
-    print(position);
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
     this._longitude = position.longitude;
     this._latitude = position.latitude;
   }
