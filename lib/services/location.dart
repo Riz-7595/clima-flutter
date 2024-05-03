@@ -24,7 +24,7 @@ class Location {
       await Geolocator.openLocationSettings();
     }
     try {
-      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
       this._longitude = position.longitude;
       this._latitude = position.latitude;
     } catch (e) {
