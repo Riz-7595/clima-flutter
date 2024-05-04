@@ -25,8 +25,8 @@ class Location {
     }
     try {
       Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
-      this._longitude = position.longitude;
-      this._latitude = position.latitude;
+      _longitude = position.longitude;
+      _latitude = position.latitude;
     } catch (e) {
       print("Error: $e");
     }

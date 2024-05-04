@@ -12,7 +12,9 @@ class NetworkHelper {
     if (res.statusCode == 200) {
       print("GET SUCCESS!");
       return jsonDecode(res.body);
-    } else
+    } else {
       print("Error: ${res.statusCode}");
+      return null;
+    }
   }
 }

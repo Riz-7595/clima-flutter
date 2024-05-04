@@ -4,6 +4,8 @@ import 'package:clima/screens/location_screen.dart';
 import 'package:clima/services/weather.dart';
 
 class LoadingScreen extends StatefulWidget {
+  const LoadingScreen({super.key});
+
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
@@ -35,15 +37,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 32),
-          Center(
+          const SizedBox(height: 32),
+          const Center(
             child: SpinKitThreeBounce(
               color: Colors.white,
               size: 48,
             ),
           ),
-          SizedBox(height: 10),
-          Container(child: Text("make sure location is turned on\nand app has access to location")),
+          const SizedBox(height: 10),
+          Container(child: const Text("make sure location is turned on\nand app has access to location")),
         ],
       ),
     );
