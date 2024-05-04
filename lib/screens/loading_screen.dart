@@ -13,9 +13,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
     WeatherModel weather = WeatherModel();
     var locationWeather = await weather.getLocationWeather();
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return LocationScreen(locationWeather);
-    }));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return LocationScreen(locationWeather);
+        },
+      ),
+    );
   }
 
   @override
