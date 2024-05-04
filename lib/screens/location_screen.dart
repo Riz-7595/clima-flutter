@@ -42,6 +42,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        padding: EdgeInsets.only(top: 15),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: const AssetImage('images/location_background.jpg'),

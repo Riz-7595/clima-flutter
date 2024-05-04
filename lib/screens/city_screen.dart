@@ -23,48 +23,51 @@ class _CityScreenState extends State<CityScreen> {
         ),
         constraints: const BoxConstraints.expand(),
         child: SafeArea(
-          child: Column(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(
-                    Icons.arrow_back_ios,
-                    size: 40.0,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(20.0),
-                child: TextField(
-                  style: const TextStyle(
-                    color: Colors.black,
-                  ),
-                  decoration: kTextFieldDecoration,
-                  onChanged: (value) {
-                    cityName = value.trim();
-                  },
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                  Future.delayed(
-                    const Duration(seconds: 1),
-                    () {
-                      Navigator.pop(context, cityName);
+          child: Container(
+            padding: EdgeInsets.only(top: 15),
+            child: Column(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
                     },
-                  );
-                },
-                child: const Text(
-                  'Get Weather',
-                  style: kButtonTextStyle,
+                    child: const Icon(
+                      Icons.arrow_back_ios,
+                      size: 40.0,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+                Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: TextField(
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
+                    decoration: kTextFieldDecoration,
+                    onChanged: (value) {
+                      cityName = value.trim();
+                    },
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                    Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        Navigator.pop(context, cityName);
+                      },
+                    );
+                  },
+                  child: const Text(
+                    'Get Weather',
+                    style: kButtonTextStyle,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
