@@ -11,11 +11,8 @@ class LocationScreen extends StatefulWidget {
   _LocationScreenState createState() => _LocationScreenState();
 }
 
-// print(locationWeather['name']);
-// print(locationWeather['main']['temp']);
-// print(locationWeather['weather'][0]['description']);
-
 class _LocationScreenState extends State<LocationScreen> {
+  WeatherModel weather = WeatherModel();
   var locationWeather;
   String? cityName;
   int? temperature;
@@ -24,15 +21,20 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   void initState() {
-    double? temp;
-    WeatherModel weather = WeatherModel();
-    locationWeather = widget.locationWeather;
-    cityName = locationWeather['name'];
-    temp = locationWeather['main']['temp'];
-    temperature = temp!.toInt();
-    condition = weather.getWeatherIcon(locationWeather['weather'][0]['id']);
-    msg = weather.getMessage(temperature!);
+    updateUI(widget.locationWeather);
     super.initState();
+  }
+
+  void updateUI(dynamic weatherData) {
+    setState(() {
+      double? temp;
+      locationWeather = weatherData;
+      cityName = locationWeather['name'];
+      temp = locationWeather['main']['temp'];
+      temperature = temp!.toInt();
+      condition = weather.getWeatherIcon(locationWeather['weather'][0]['id']);
+      msg = weather.getMessage(temperature!);
+    });
   }
 
   @override
@@ -56,7 +58,10 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      var weatherData = await weather.getLocationWeather();
+                      updateUI(weatherData);
+                    },
                     child: Icon(
                       Icons.near_me,
                       size: 50.0,

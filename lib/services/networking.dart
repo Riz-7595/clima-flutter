@@ -8,14 +8,11 @@ class NetworkHelper {
 
   Future getData() async {
     http.Response res;
-    try {
-      res = await http.get(Uri.parse(_url));
-      if (res.statusCode == 200)
-        return jsonDecode(res.body);
-      else
-        print("Error: ${res.statusCode}");
-    } catch (e) {
-      print("Error: $e");
-    }
+    res = await http.get(Uri.parse(_url));
+    if (res.statusCode == 200) {
+      print("GET SUCCESS!");
+      return jsonDecode(res.body);
+    } else
+      print("Error: ${res.statusCode}");
   }
 }
